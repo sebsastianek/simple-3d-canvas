@@ -49,10 +49,13 @@ export default class Renderer {
             const visiblePoints: Vertex[] = [];
 
             points.forEach((point) => {
-                const point2d = multiplyVertexByMatrix(multiplyVertexByMatrix(point, this.camera.viewMatrix.matrix), this.camera.projectionMatrix.matrix);
-                points2d.push(point2d);
-                if ( point2d.x >= -1 &&  point2d.x <= 1 &&  point2d.y >= -1 &&  point2d.y <= 1) {
-                    visiblePoints.push(point2d);
+                const product = multiplyVertexByMatrix(point, this.camera.viewMatrix.matrix);
+                if (product.z > 0) {
+                    const point2d = multiplyVertexByMatrix(product, this.camera.projectionMatrix.matrix);
+                    points2d.push(point2d);
+                    if ( point2d.x >= -1 &&  point2d.x <= 1 &&  point2d.y >= -1 &&  point2d.y <= 1) {
+                        visiblePoints.push(point2d);
+                    }
                 }
             });
 
