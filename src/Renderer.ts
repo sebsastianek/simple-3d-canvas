@@ -59,7 +59,7 @@ export default class Renderer {
                 }
             });
 
-            if (visiblePoints.length > 0) {
+            if (visiblePoints.length === 3) {
                 const polygon2d = new Polygon(points2d[0], points2d[1], points2d[2]);
                 polygon2d.color = polygon.color;
                 if (!isFacedBackwards(polygon2d)) {
