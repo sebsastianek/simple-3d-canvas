@@ -106,21 +106,20 @@ export default class Camera {
     }
 
     get viewDirectionMatrix() {
-
         return matrix(
             [
-                cos(unit(this.pitch, 'deg')) * cos(unit(this.yaw, 'deg')),
-                sin(unit(this.pitch, 'deg')) * cos(unit(this.yaw, 'deg')),
-                sin(unit(this.yaw, 'deg'))
+                sin(unit(this.yaw, 'deg')),
+                -sin(unit(this.pitch, 'deg')),
+                cos(unit(this.pitch, 'deg')) * cos(unit(this.yaw, 'deg'))
             ]
         )
     }
 
     move(distance: number) {
         const looksAt = this.viewDirectionMatrix;
-        this.position.x += looksAt.get([2]) * distance;
-        this.position.y += -looksAt.get([1]) * distance;
-        this.position.z += looksAt.get([0]) * distance;
+        this.position.x += looksAt.get([0]) * distance;
+        this.position.y += looksAt.get([1]) * distance;
+        this.position.z += looksAt.get([2]) * distance;
         this.onCameraChange();
     }
 
