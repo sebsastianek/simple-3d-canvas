@@ -5,8 +5,8 @@ export type KeyboardActions = 37 | 38 | 39 | 40 | 187 | 189;
 export default class InputHandler {
     static KEY_UP = 38;
     static KEY_DOWN = 40;
-    static KEY_ZOOM_PLUS = 187;
-    static KEY_ZOOM_MINUS = 189;
+    static KEY_ZOOM_PLUS = 221;
+    static KEY_ZOOM_MINUS = 219;
     static KEY_LOOK_UP = 87;
     static KEY_LOOK_DOWN = 83;
     static KEY_LOOK_LEFT = 65;

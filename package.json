@@ -9,6 +9,7 @@
   "author": "Sebastian Krysiak",
   "license": "MIT",
   "dependencies": {
+    "core-js": "^3.4.2",
     "mathjs": "^6.2.3",
     "rxjs": "^6.5.3"
   },

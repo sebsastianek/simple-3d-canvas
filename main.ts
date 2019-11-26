@@ -1,3 +1,5 @@
+import "core-js/es";
+
 import Camera from "./src/Camera";
 import InputHandler from "./src/InputHandler";
 import Scene from "./src/Scene";
@@ -19,9 +21,6 @@ for (let i = 0; i < 15; i++) {
     const center = new Vertex(randomSign() * Math.random() * 10 * i,   25 + randomSign() * Math.random() * 10 * i,  25 + randomSign() * Math.random() * 5 * (i));
     scene.addElement(new Cube(center,  Math.random() * 6, color));
 }
-
-scene.addElement(new Cube(new Vertex(12,12,122),  Math.random() * 6, randomColor()));
-
 
 const renderer = new Renderer(scene, camera, canvas);
 renderer.render();
