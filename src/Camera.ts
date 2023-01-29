@@ -2,7 +2,7 @@ import {Subject} from "rxjs";
 import ProjectionMatrix from "./ProjectionMatrix";
 import Vertex from "./Vertex";
 import ViewMatrix from "./ViewMatrix";
-import {cos, Matrix, matrix, multiply, sin, unit, round} from "mathjs";
+import {cos, matrix, sin, unit} from "mathjs";
 
 
 export default class Camera {
@@ -15,8 +15,8 @@ export default class Camera {
     private readonly _viewMatrix: ViewMatrix;
     private readonly _position: Vertex;
     private readonly _cameraUpdate: any;
-    static STEP =  5;
-    static DEGREE_STEP = 0.2;
+    static STEP =  2;
+    static DEGREE_STEP = 0.4;
 
     constructor() {
         this._cameraUpdate = new Subject();

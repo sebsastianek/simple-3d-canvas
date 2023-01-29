@@ -7,26 +7,26 @@ import {randomColor} from "../Services/Color";
 export default class Cube implements WorldObjectInterface {
     polygons: Polygon[];
     private _color: string;
+    private _center: Vertex;
+    private _size: number;
 
     constructor(center: Vertex, size: number, color: string) {
         this._color = color;
-        this.createPolygons(center, size);
+        this._center = center;
+        this._size = size;
+        this.createPolygons();
     }
 
-    /**
-     * @param center
-     * @param size
-     */
-    createPolygons(center: Vertex, size: number) {
+    createPolygons() {
         const baseVertices: Vertex[] = [
-            new Vertex(center.x - size,center.y - size,center.z - size),
-            new Vertex(center.x - size,center.y - size, center.z + size),
-            new Vertex(center.x - size, center.y + size, center.z + size),
-            new Vertex(center.x + size, center.y + size,center.z - size),
-            new Vertex(center.x - size, center.y + size,center.z - size),
-            new Vertex(center.x + size,center.y - size, center.z + size),
-            new Vertex(center.x + size,center.y - size,center.z - size),
-            new Vertex(center.x + size, center.y + size, center.z + size),
+            new Vertex(this.center.x - this.size,this.center.y - this.size,this.center.z - this.size),
+            new Vertex(this.center.x - this.size,this.center.y - this.size, this.center.z + this.size),
+            new Vertex(this.center.x - this.size, this.center.y + this.size, this.center.z + this.size),
+            new Vertex(this.center.x + this.size, this.center.y + this.size,this.center.z - this.size),
+            new Vertex(this.center.x - this.size, this.center.y + this.size,this.center.z - this.size),
+            new Vertex(this.center.x + this.size,this.center.y - this.size, this.center.z + this.size),
+            new Vertex(this.center.x + this.size,this.center.y - this.size,this.center.z - this.size),
+            new Vertex(this.center.x + this.size, this.center.y + this.size, this.center.z + this.size),
         ];
 
         const connections = [
@@ -40,6 +40,22 @@ export default class Cube implements WorldObjectInterface {
             polygon.color = this.color;
             return polygon;
         });
+    }
+
+    get center(): Vertex {
+        return this._center;
+    }
+
+    set center(value: Vertex) {
+        this._center = value;
+    }
+
+    get size(): number {
+        return this._size;
+    }
+
+    set size(value: number) {
+        this._size = value;
     }
 
     get color(): string {

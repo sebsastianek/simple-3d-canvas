@@ -4,6 +4,7 @@
   "description": "Basic 3d camera based on canvas",
   "main": "index.js",
   "scripts": {
+    "build": "node ./node_modules/webpack/bin/webpack.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "Sebastian Krysiak",

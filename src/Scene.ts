@@ -1,6 +1,7 @@
 import {WorldObjectInterface} from "./WorldObjects/WorldObject.interface";
+import {SceneInterface} from "./Scene.interface";
 
-export default class Scene {
+export default class Scene implements SceneInterface {
     private _elements: WorldObjectInterface[] = [];
 
     get elements(): WorldObjectInterface[] {

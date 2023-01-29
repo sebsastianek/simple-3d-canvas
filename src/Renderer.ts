@@ -5,23 +5,27 @@ import Polygon from "./WorldObjects/Polygon";
 import {multiplyVertexByMatrix} from "./Services/Matrix";
 import Vertex from "./Vertex";
 import {isFacedBackwards} from "./Services/BackfaceCulling";
+import {SceneRandomizerDecorator} from "./SceneRandomizerDecorator";
+import {SceneInterface} from "./Scene.interface";
 
 
 export default class Renderer {
-    private readonly _scene: Scene;
+    private readonly _scene: SceneInterface;
     private readonly _camera: Camera;
     private readonly _canvas: Canvas;
+    private readonly _window: Window;
 
-    constructor(scene: Scene, camera: Camera,  canvas: Canvas) {
+    constructor(scene: SceneInterface, camera: Camera,  canvas: Canvas, window: Window) {
         this._scene = scene;
         this._camera = camera;
+        this._window = window;
         this._canvas = canvas;
-        this._camera.cameraUpdate.subscribe((elem: any) => {
+        this._window.requestAnimationFrame(() => {
             this.render();
-        });
+        })
     }
 
-    get scene(): Scene {
+    get scene(): SceneInterface {
         return this._scene;
     }
 
@@ -65,5 +69,9 @@ export default class Renderer {
                 }
             }
         });
+
+        this._window.requestAnimationFrame(() => {
+            this.render();
+        })
     }
 }

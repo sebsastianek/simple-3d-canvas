@@ -1,7 +1,6 @@
 import Vertex from "../Vertex";
-import {WorldObjectInterface} from "./WorldObject.interface";
 
-export default class Polygon implements WorldObjectInterface {
+export default class Polygon  {
     private _points: Vertex[];
     private _color: string;
 
@@ -45,8 +44,4 @@ export default class Polygon implements WorldObjectInterface {
             (this.first.z + this.second.z + this.third.z) / 3
         )
     }
-
-    getPolygons() {
-        return [this];
-    };
 }

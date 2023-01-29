@@ -2,12 +2,8 @@ const path = require('path');
 
 module.exports = {
     entry: './main.ts',
-    mode: 'development',
-    watch: true,
-    watchOptions: {
-        aggregateTimeout: 300,
-        poll: 700
-    },
+    mode: 'production',
+    watch: false,
     module: {
         rules: [
             {

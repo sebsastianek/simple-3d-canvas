@@ -6,15 +6,20 @@ import Scene from "./src/Scene";
 import Canvas from "./src/Canvas";
 import Renderer from "./src/Renderer";
 import Vertex from "./src/Vertex";
+import Cube from "./src/WorldObjects/Cube";
+import {randomColor} from "./src/Services/Color";
+import {randomSign} from "./src/Services/Math";
+import {SceneRandomizerDecorator} from "./src/SceneRandomizerDecorator";
+import {SceneInterface} from "./src/Scene.interface";
 
 const canvasElement = <HTMLCanvasElement> document.getElementById('projectionCanvas');
 const canvas = new Canvas(canvasElement);
 const camera = new Camera();
 new InputHandler(camera);
-const scene = new Scene();
-import Cube from "./src/WorldObjects/Cube";
-import {randomColor} from "./src/Services/Color";
-import {randomSign} from "./src/Services/Math";
+let scene: SceneInterface = new Scene();
+
+// Randomize elements;
+scene = new SceneRandomizerDecorator(scene);
 
 for (let i = 0; i < 15; i++) {
     const color = randomColor();
@@ -22,5 +27,4 @@ for (let i = 0; i < 15; i++) {
     scene.addElement(new Cube(center,  Math.random() * 6, color));
 }
 
-const renderer = new Renderer(scene, camera, canvas);
-renderer.render();
+const renderer = new Renderer(scene, camera, canvas, window);

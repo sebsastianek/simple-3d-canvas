@@ -3,7 +3,7 @@ import {Matrix, multiply} from "mathjs";
 
 const normalizeMatrix = (matrix: Matrix): Matrix => {
     const w = matrix.get([3]);
-    if (w !== 1) {
+    if (w !== 0) {
         matrix.set([0], matrix.get([0]) / w);
         matrix.set([1], matrix.get([1]) / w);
         matrix.set([2], matrix.get([2]) / w)

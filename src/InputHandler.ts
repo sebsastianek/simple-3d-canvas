@@ -30,6 +30,7 @@ export default class InputHandler {
 
     initListener() {
         window.addEventListener('keydown', this.handleKeyPress.bind(this));
+        window.addEventListener('keyup', this.handleKeyPress.bind(this));
         window.addEventListener('mousemove', this.handleMouseMove.bind(this));
         window.addEventListener('mousedown', () => this.mousePressState = true);
         window.addEventListener('mouseup', () => this.mousePressState = false);
@@ -46,7 +47,7 @@ export default class InputHandler {
             case InputHandler.KEY_UP:
                 this._camera.moveForward();
                 break;
-            case    InputHandler.KEY_DOWN:
+            case InputHandler.KEY_DOWN:
                 this._camera.moveBackward();
                 break;
             case   InputHandler.KEY_ZOOM_PLUS:
