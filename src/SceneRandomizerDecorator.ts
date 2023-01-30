@@ -6,9 +6,11 @@ import {SceneInterface} from "./Scene.interface";
 
 export class SceneRandomizerDecorator implements SceneInterface {
     private _scene: SceneInterface;
+    private _randomMoveStep: number;
 
-    constructor(scene: SceneInterface) {
+    constructor(scene: SceneInterface, randomMoveStep = 0.05) {
         this._scene = scene;
+        this._randomMoveStep = randomMoveStep;
     }
 
     get elements() {
@@ -31,9 +33,9 @@ export class SceneRandomizerDecorator implements SceneInterface {
     randomize() {
         this._scene.elements = this._scene.elements.map((worldObject: WorldObjectInterface) => {
             worldObject.color = randomizeRgbString(worldObject.color);
-            worldObject.center.x = worldObject.center.x + randomSign() * 0.2;
-            worldObject.center.y = worldObject.center.y + randomSign() * 0.2;
-            worldObject.center.z = worldObject.center.z + randomSign() * 0.2;
+            worldObject.center.x = worldObject.center.x + randomSign() * this._randomMoveStep;
+            worldObject.center.y = worldObject.center.y + randomSign() * this._randomMoveStep;
+            worldObject.center.z = worldObject.center.z + randomSign() * this._randomMoveStep;
             worldObject.createPolygons();
             return worldObject;
         })
